@@ -1,5 +1,9 @@
 package com.mobiquity.constant;
 
+/**
+ * @author emircankilinc
+ *
+ */
 public class PackerConstants {
 
 	public static Double MAX_ALLOWABLE_PACKAGE_WEIGHT = 100.0;
