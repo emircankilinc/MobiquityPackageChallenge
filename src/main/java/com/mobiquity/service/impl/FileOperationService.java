@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.mobiquity.constant.PackerConstants;
 import com.mobiquity.constant.ServiceConstants;
 import com.mobiquity.exception.APIException;
 import com.mobiquity.model.Item;
@@ -76,9 +77,20 @@ public class FileOperationService implements IFileOperationService {
 			// weight
 			Integer packageWeight = Integer.parseInt(lineSplittingWithColon[0].trim());
 
+			// Validating maximum allowable package's weight
+			if (PackerConstants.MAX_ALLOWABLE_PACKAGE_WEIGHT
+					.compareTo(Double.parseDouble(lineSplittingWithColon[0].trim())) == -1) {
+				throw new APIException("Max weight that a package can take is exceeded!");
+			}
+
 			// Remain part is splitting with space char (i.e: "(3,3.98,€16)",
 			// "(4,26.24,€55)")
 			String[] itemsArray = lineSplittingWithColon[1].trim().split(ServiceConstants.SPACE);
+
+			// Validating maximum allowable item's numbers
+			if (PackerConstants.MAX_ALLOWABLE_NUMBER_OF_ITEMS.compareTo(itemsArray.length) == -1) {
+				throw new APIException("Max items count is exceeded!");
+			}
 
 			List<Item> itemList = new ArrayList<>();
 
@@ -94,9 +106,20 @@ public class FileOperationService implements IFileOperationService {
 
 				// Parsing String to Integer and Double
 				// Removing currency part with substring function
-				itemList.add(new Item(Integer.parseInt(itemProperties[0].trim()),
-						Double.parseDouble(itemProperties[1].trim()),
-						Integer.parseInt(itemProperties[2].trim().substring(1))));
+				Integer itemIndex = Integer.parseInt(itemProperties[0].trim());
+				Double itemWeight = Double.parseDouble(itemProperties[1].trim());
+				Integer itemCost = Integer.parseInt(itemProperties[2].trim().substring(1));
+
+				// Validating maximum allowable item's cost and weight
+				if (PackerConstants.MAX_ALLOWABLE_ITEM_COST.compareTo(itemCost) == -1) {
+					throw new APIException("Max cost of an item is exceeded!");
+				}
+				if (PackerConstants.MAX_ALLOWABLE_ITEM_WEIGHT.compareTo(itemWeight) == -1) {
+					throw new APIException("Max weight of an item is exceeded!");
+				}
+
+				//Adding Item to item list
+				itemList.add(new Item(itemIndex, itemWeight, itemCost));
 
 			}
 
