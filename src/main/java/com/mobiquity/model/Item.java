@@ -1,5 +1,9 @@
 package com.mobiquity.model;
 
+/**
+ * @author emircankilinc
+ *
+ */
 public class Item {
 
 	private Integer index;

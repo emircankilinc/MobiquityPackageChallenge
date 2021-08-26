@@ -2,12 +2,16 @@ package com.mobiquity.model;
 
 import java.util.List;
 
-public class Package {
+/**
+ * @author emircankilinc
+ *
+ */
+public class Pack {
 
 	private List<Item> items;
 	private Integer weight;
 
-	public Package(List<Item> items, Integer weight) {
+	public Pack(List<Item> items, Integer weight) {
 		super();
 		this.items = items;
 		this.weight = weight;
