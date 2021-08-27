@@ -106,9 +106,9 @@ mvn install
 **With Gradle**
 
 ```
+gradle clean
 gradle build
 gradle run
-gradle clean
 ```
 
 Project has junit and apache commons dependeny that given below maven and gradle dependencies.
