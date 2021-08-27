@@ -27,7 +27,7 @@ public class PackerTest {
 	public void testForMissingFile() {
 		try {
 			Packer.pack(packerTestUtil.MissingFilePath);
-		} catch (APIException e) {
+		} catch (Exception e) {
 			assertEquals(APIException.class, e.getClass());
 		}
 	}
@@ -38,7 +38,7 @@ public class PackerTest {
 			String filePath = packerTestUtil
 					.createFileWithTestData(packerTestUtil.HeavierPacketWeightThanMaxAllowableWeight);
 			Packer.pack(filePath);
-		} catch (APIException e) {
+		} catch (Exception e) {
 			assertEquals(APIException.class, e.getClass());
 		}
 	}
@@ -49,7 +49,7 @@ public class PackerTest {
 			String filePath = packerTestUtil
 					.createFileWithTestData(packerTestUtil.HeavierItemWeightThanMaxAllowableWeight);
 			Packer.pack(filePath);
-		} catch (APIException e) {
+		} catch (Exception e) {
 			assertEquals(APIException.class, e.getClass());
 		}
 	}
@@ -59,7 +59,7 @@ public class PackerTest {
 		try {
 			String filePath = packerTestUtil.createFileWithTestData(packerTestUtil.MoreItemsThanMaxAllowed);
 			Packer.pack(filePath);
-		} catch (APIException e) {
+		} catch (Exception e) {
 			assertEquals(APIException.class, e.getClass());
 		}
 	}
@@ -69,22 +69,48 @@ public class PackerTest {
 		try {
 			String filePath = packerTestUtil.createFileWithTestData(packerTestUtil.MuchItemCostThanMaxAllowed);
 			Packer.pack(filePath);
-		} catch (APIException e) {
+		} catch (Exception e) {
 			assertEquals(APIException.class, e.getClass());
 		}
 	}
 
 	@Test
-	public void testForValidRequest() {
+	public void testForItemsHasSameCostButDifferentWeight() {
 		try {
-			String filePath = packerTestUtil.createFileWithTestData(packerTestUtil.validRequest);
+			String filePath = packerTestUtil.createFileWithTestData(packerTestUtil.ItemsHasSameCostButDifferentWeight);
 			String pack = Packer.pack(filePath);
-			String[] split = pack.split("\\r?\\n");
-			List<String> results = Arrays.asList(split);
-			assertEquals(packerTestUtil.validResponse, results);
-		} catch (APIException e) {
+			assertEquals("2,3,4", pack);
+		} catch (Exception e) {
 			assertEquals(APIException.class, e.getClass());
 		}
+	}
+
+	@Test
+	public void testForInvalidRequest() {
+		try {
+			String filePath = packerTestUtil.createFileWithTestData(packerTestUtil.InvalidRequest);
+			Packer.pack(filePath);
+		} catch (Exception e) {
+			assertEquals(APIException.class, e.getClass());
+		}
+	}
+
+	@Test
+	public void testForValidSingleLineRequest() throws APIException {
+		String filePath = packerTestUtil.createFileWithTestData(packerTestUtil.validSingleLineRequest);
+		String pack = Packer.pack(filePath);
+		String[] split = pack.split("\\r?\\n");
+		List<String> results = Arrays.asList(split);
+		assertEquals(packerTestUtil.validSingleLineResponse, results);
+	}
+
+	@Test
+	public void testForValidMultiLineRequest() throws APIException {
+		String filePath = packerTestUtil.createFileWithTestData(packerTestUtil.validMultiLineRequest);
+		String pack = Packer.pack(filePath);
+		String[] split = pack.split("\\r?\\n");
+		List<String> results = Arrays.asList(split);
+		assertEquals(packerTestUtil.validMultiLineResponse, results);
 	}
 
 }
