@@ -104,8 +104,6 @@ public class FileOperationService implements IFileOperationService {
 				// Remain part is splitting with comma (i.e: "3","3.98","€16")
 				String[] itemProperties = itemPropertiesWithoutBrackets.split(ServiceConstants.COMMA);
 
-				// Parsing String to Integer and Double
-				// Removing currency part with substring function
 				Integer itemIndex = Integer.parseInt(itemProperties[0].trim());
 				Double itemWeight = Double.parseDouble(itemProperties[1].trim());
 				Integer itemCost = Integer.parseInt(itemProperties[2].trim().substring(1));
