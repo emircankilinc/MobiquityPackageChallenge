@@ -96,21 +96,19 @@ Packer.pack("example_input.txt")
 After cloning project, go to project directory and run mvn commands.
 
 ```
+mvn clean
 mvn compile
 mvn package
 mvn install
-
 ```
 
 
 **With Gradle**
 
 ```
-
 gradle build
 gradle run
 gradle clean
-
 ```
 
 Project has junit and apache commons dependeny that given below maven and gradle dependencies.
@@ -133,7 +131,6 @@ Project has junit and apache commons dependeny that given below maven and gradle
 		<version>3.12.0</version>
 	</dependency>
 </dependencies>
-
 ```
 
 **Gradle Dependencies**
@@ -143,7 +140,6 @@ dependencies{
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 	testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
-
 ```
 
 ###### Built With
