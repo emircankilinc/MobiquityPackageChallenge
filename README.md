@@ -98,7 +98,6 @@ After cloning project, go to project directory and run mvn commands.
 ```
 mvn clean
 mvn compile
-mvn package
 mvn install
 ```
 
