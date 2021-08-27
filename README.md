@@ -64,11 +64,11 @@ Adding this application's dependency to another project's maven or gradle like b
 
 **Maven**
 ```
-    <dependency>
-			<groupId>com.mobiquity</groupId>
-			<artifactId>implementation</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
+<dependency>
+	<groupId>com.mobiquity</groupId>
+	<artifactId>implementation</artifactId>
+	<version>1.0-SNAPSHOT</version>
+</dependency>
 ```
 
 **Gradle**
@@ -118,19 +118,19 @@ Project has junit and apache commons dependeny that given below maven and gradle
 **Maven Dependencies**
 
 ```
-  <dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.12.0</version>
-		</dependency>
-	</dependencies>
+<dependencies>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.13.2</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.12.0</version>
+	</dependency>
+</dependencies>
 
 ```
 
@@ -138,10 +138,8 @@ Project has junit and apache commons dependeny that given below maven and gradle
 
 ```
 dependencies{
-
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 	testImplementation group: 'junit', name: 'junit', version: '4.13.2'
-  
 }
 
 ```
