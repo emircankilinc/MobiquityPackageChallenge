@@ -53,8 +53,7 @@ public class FileOperationService implements IFileOperationService {
 
 			// Get all lines from file with specific charset otherwise may be
 			// MalformedInputException
-			List<String> lines = Files.lines(path, Charset.forName(ServiceConstants.CHARSET_CP1252))
-					.collect(Collectors.toList());
+			List<String> lines = Files.lines(path, Charset.forName(ServiceConstants.CHARSET_UTF8)).collect(Collectors.toList());
 
 			return lines;
 

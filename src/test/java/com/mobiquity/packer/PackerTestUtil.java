@@ -19,7 +19,7 @@ public class PackerTestUtil {
 	public final int MaxItemsCount = 15;
 	public final String MissingFilePath = "MissingFilePath";
 	private final String fileName = "TestFile.txt";
-	private final String CHARSET_CP1252 = "Cp1252";
+	private final String CHARSET_UTF8 = "UTF8";
 
 	public final List<String> HeavierPacketWeightThanMaxAllowableWeight = Arrays.asList("1000 : (1,15.3,€34)");
 
@@ -62,7 +62,7 @@ public class PackerTestUtil {
 	public String createFileWithTestData(List<String> data) {
 		Path file = Paths.get(fileName);
 		try {
-			Files.write(file, data, Charset.forName(CHARSET_CP1252));
+			Files.write(file, data, Charset.forName(CHARSET_UTF8));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

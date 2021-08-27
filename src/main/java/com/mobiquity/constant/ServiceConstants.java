@@ -12,6 +12,6 @@ public class ServiceConstants {
 	public static String COMMA = ",";
 	public static String RIGHT_PARENTHESIS = ")";
 	public static String LEFT_PARENTHESIS = "(";
-	public static String CHARSET_CP1252 = "Cp1252";
+	public static String CHARSET_UTF8 = "UTF8";
 
 }
