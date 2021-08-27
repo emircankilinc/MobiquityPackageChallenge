@@ -66,7 +66,7 @@ public class FileOperationService implements IFileOperationService {
 	}
 
 	@Override
-	public com.mobiquity.model.Pack getPackInformationFromLine(String line) throws APIException {
+	public Pack getPackInformationFromLine(String line) throws APIException {
 		try {
 
 			// First splitting line with ":"
