@@ -2,7 +2,12 @@ package com.mobiquity.exception;
 
 public class APIException extends Exception {
 
-  public APIException(String message, Exception e) {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3141434677395845102L;
+
+public APIException(String message, Exception e) {
     super(message, e);
   }
 
