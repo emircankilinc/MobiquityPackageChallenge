@@ -80,7 +80,9 @@ public class FileOperationService implements IFileOperationService {
 			// Validating maximum allowable package's weight
 			if (PackerConstants.MAX_ALLOWABLE_PACKAGE_WEIGHT
 					.compareTo(Double.parseDouble(lineSplittingWithColon[0].trim())) == -1) {
-				throw new APIException("Max weight that a package can take is exceeded!");
+				throw new APIException(
+						"Max weight that a package can take is exceeded! The maximum allowable weight should be : "
+								+ PackerConstants.MAX_ALLOWABLE_PACKAGE_WEIGHT.toString());
 			}
 
 			// Remain part is splitting with space char (i.e: "(3,3.98,€16)",
@@ -89,7 +91,8 @@ public class FileOperationService implements IFileOperationService {
 
 			// Validating maximum allowable item's numbers
 			if (PackerConstants.MAX_ALLOWABLE_NUMBER_OF_ITEMS.compareTo(itemsArray.length) == -1) {
-				throw new APIException("Max items count is exceeded!");
+				throw new APIException("Max items count is exceeded! The maximum allowable items count should be : "
+						+ PackerConstants.MAX_ALLOWABLE_NUMBER_OF_ITEMS.toString());
 			}
 
 			List<Item> itemList = new ArrayList<>();
@@ -110,13 +113,17 @@ public class FileOperationService implements IFileOperationService {
 
 				// Validating maximum allowable item's cost and weight
 				if (PackerConstants.MAX_ALLOWABLE_ITEM_COST.compareTo(itemCost) == -1) {
-					throw new APIException("Max cost of an item is exceeded!");
+					throw new APIException(
+							"Max cost of an item is exceeded!  The maximum allowable cost for an item should be : "
+									+ PackerConstants.MAX_ALLOWABLE_ITEM_COST.toString());
 				}
 				if (PackerConstants.MAX_ALLOWABLE_ITEM_WEIGHT.compareTo(itemWeight) == -1) {
-					throw new APIException("Max weight of an item is exceeded!");
+					throw new APIException(
+							"Max weight of an item is exceeded!  The maximum allowable weight for an item should be : "
+									+ PackerConstants.MAX_ALLOWABLE_ITEM_WEIGHT);
 				}
 
-				//Adding Item to item list
+				// Adding Item to item list
 				itemList.add(new Item(itemIndex, itemWeight, itemCost));
 
 			}

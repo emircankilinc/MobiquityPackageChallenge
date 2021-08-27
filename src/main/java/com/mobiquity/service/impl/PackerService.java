@@ -26,9 +26,9 @@ public class PackerService implements IPackerService {
 	/**
 	 * Package Challenge is same as 0-1 Knapsack Problem. So Memoization Technique
 	 * (an extension of recursive approach) is used while solving this problem. But
-	 * normally this solution return only result total weight value but in this case
-	 * solution contains item index. For this reason some new features and logics
-	 * added this algorithm.
+	 * normally this solution return only result that contains maximum total weight
+	 * value but in this case solution contains item index/indexes. For this reason
+	 * some new features and logics added this algorithm.
 	 * 
 	 * Actually in this algorithm we need 2D array but in this situation we don't
 	 * need for this array because of we have to hold items which has to be in the
@@ -109,13 +109,14 @@ public class PackerService implements IPackerService {
 
 			// System.arraycopy method that is also in the Java Core library. Using this
 			// copying array from source array to destination array. Position 0 to length of
+			// original isItemInPackage array
 			// above initialized boolean array length
 			System.arraycopy(isItemInPackage, 0, firstItemInPackageArray, 0, firstItemInPackageArray.length);
 			System.arraycopy(isItemInPackage, 0, secondItemInPackageArray, 0, secondItemInPackageArray.length);
 
 			// Changing first array element that at end of the array Boolean.False default
 			// value to Boolean.True
-			firstItemInPackageArray[sizeOfItem - 1] = true;
+			firstItemInPackageArray[sizeOfItem - 1] = Boolean.TRUE;
 
 			// Adding first element at end of the items list and calculate the solution with
 			// recursive
