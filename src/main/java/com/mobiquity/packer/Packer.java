@@ -46,10 +46,8 @@ public class Packer {
 			// calling solve method for each line
 			result.append(solve(line)).append("\n");
 		}
-
-		System.out.println(result.toString());
+		
 		return result.toString().trim();
-
 	}
 
 	/**
